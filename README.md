@@ -13,7 +13,7 @@ I had issues with using Tesseract for recognizing text on a perfect image for OC
 I generated my training data by writing all the characters in a text editor in the font I wanted and then screenshooting it.
 For example, the image I created for Inconsolata Condensed Regular font:
 
-![alt text](https://github.com/drajsel/simple-ocr/blob/main/data/inconsolata_condensed_regular_train.png)
+![alt text](https://github.com/drajsel/simple-ocr/blob/master/data/inconsolata_condensed_regular_train.png)
 
 Using `label.py` the user can label manually the detected characters. 
 
@@ -79,27 +79,27 @@ The character detection and recognition is performed by the function `classify` 
 
 original image:
 
-![alt text](https://github.com/drajsel/simple-ocr/blob/main/img/hello_world.png)
+![alt text](https://github.com/drajsel/simple-ocr/blob/master/img/hello_world.png)
 
 line detection (morphological closing):
 
-![alt text](https://github.com/drajsel/simple-ocr/blob/main/img/line_detection.png)
+![alt text](https://github.com/drajsel/simple-ocr/blob/master/img/line_detection.png)
 
 one of the detected lines:
 
-![alt text](https://github.com/drajsel/simple-ocr/blob/main/img/detected_line.png)
+![alt text](https://github.com/drajsel/simple-ocr/blob/master/img/detected_line.png)
 
 character detection (morphological closing):
 
-![alt text](https://github.com/drajsel/simple-ocr/blob/main/img/morphing.png)
+![alt text](https://github.com/drajsel/simple-ocr/blob/master/img/morphing.png)
 
 detected characters (bounding boxes of the detected contours):
 
-![alt text](https://github.com/drajsel/simple-ocr/blob/main/img/detected_characters.png)
+![alt text](https://github.com/drajsel/simple-ocr/blob/master/img/detected_characters.png)
 
 classification:
 
-![alt text](https://github.com/drajsel/simple-ocr/blob/main/img/ocr_result.png)
+![alt text](https://github.com/drajsel/simple-ocr/blob/master/img/ocr_result.png)
 
 ## Credits
 
