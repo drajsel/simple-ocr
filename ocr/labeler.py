@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import string
 
-from ocr.segmentation import process_image, region_from_segment
+from ocr.segmentation import process_image, region_from_segment, autocrop
 from utils.visualisation_utils import draw_classes, draw_segments, show_image_and_wait_for_key
 from six import unichr
 
@@ -12,14 +12,21 @@ PADDING = 30
 
 
 def label(image_filename, font_name, input_mode="matplotlib", folder_name="train_data"):
-    img = cv2.imread("data/{}.png".format(image_filename))
+    img = cv2.imread("data/{}".format(image_filename))
+
+    if img is None:
+        img = cv2.imread("{}".format(image_filename))
+        if img is None:
+            print("Wrong image path")
+            exit(0)
+
     cv2.imshow("Training data", img)
 
     img = cv2.copyMakeBorder(img, top=PADDING, bottom=PADDING, left=PADDING, right=PADDING,
                              borderType=cv2.BORDER_CONSTANT, value=(255,255,255))
     line_segments, line_imgs = process_image(img.copy(), show_steps=False, offset_y=0, offset_x=0)
 
-    save_path = os.path.join("fonts", font_name, folder_name)
+    save_path = os.path.join("data", "fonts", font_name, folder_name)
     os.makedirs(save_path, exist_ok=True)
     ind = -1
 
@@ -32,6 +39,7 @@ def label(image_filename, font_name, input_mode="matplotlib", folder_name="train
                     ind += 1
 
                     char_img = region_from_segment(line_img, line_segment[i])
+                    char_img = autocrop(char_img)
                     cv2.imwrite("{}/{}.png".format(save_path, ind), char_img)
 
                     plt.imshow(char_img)
@@ -55,6 +63,7 @@ def label(image_filename, font_name, input_mode="matplotlib", folder_name="train
                         i = len(line_segment) - 1
 
                     char_img = region_from_segment(line_img, line_segment[i])
+                    char_img = autocrop(char_img)
                     images[i] = char_img
                     line_img_copy = cv2.cvtColor(line_img.copy(), cv2.COLOR_GRAY2BGR)
 
