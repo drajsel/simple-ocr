@@ -32,7 +32,7 @@ def region_from_segment(image, segment):
         return image[y:y + h, x:x + w, :]
 
 
-def process_image(img, show_steps=False, offset_y=-2, offset_x=0):
+def process_image(img, show_steps=False, offset_y=0, offset_x=0):
     line_segments = [] # 2d array because of lines
     line_imgs = []
 

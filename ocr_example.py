@@ -35,12 +35,13 @@ if __name__ == "__main__":
 
     n = 100
     exec_time = 0.0
+    metric = 'imed'
     for _ in range(n):
         start = time.time()
-        classify(img, show_steps=args['show_steps'], feature_size=50,
-                 font_name=args['font'])
+        classify(img, show_steps=args['show_steps'], feature_size=30,
+                 font_name=args['font'], metric=metric)
         exec_time += time.time() - start
 
-    print(classify(img, show_steps=args['show_steps'], feature_size=50,
-                   font_name=args['font']))
+    print(classify(img, show_steps=args['show_steps'], feature_size=30,
+                   font_name=args['font'], metric=metric))
     print("Average classification time ({} it): {} ms".format(n, int(1000 * (exec_time / n))))
